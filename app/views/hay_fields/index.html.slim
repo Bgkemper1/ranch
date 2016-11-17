@@ -1,0 +1,23 @@
+h1 Listing hay_fields
+
+table class='table'
+  thead
+    tr
+      th Field name
+      th Bail count
+      th
+      th
+      th
+
+  tbody
+    - @hay_fields.each do |hay_field|
+      tr
+        td = hay_field.field_name
+        td = hay_field.bail_count
+        td = link_to 'Show', hay_field
+        td = link_to 'Edit', edit_hay_field_path(hay_field)
+        td = link_to 'Destroy', hay_field, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Hay field', new_hay_field_path

@@ -1,0 +1,1 @@
+json.array! @hay_fields, partial: 'hay_fields/hay_field', as: :hay_field
