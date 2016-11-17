@@ -1,0 +1,2 @@
+class HayBail < ApplicationRecord
+end

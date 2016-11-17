@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Hay Bails</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Field name</th>
+      <th>Bail count</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @hay_bails.each do |hay_bail| %>
+      <tr>
+        <td><%= hay_bail.field_name %></td>
+        <td><%= hay_bail.bail_count %></td>
+        <td><%= link_to 'Show', hay_bail %></td>
+        <td><%= link_to 'Edit', edit_hay_bail_path(hay_bail) %></td>
+        <td><%= link_to 'Destroy', hay_bail, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Hay Bail', new_hay_bail_path %>
