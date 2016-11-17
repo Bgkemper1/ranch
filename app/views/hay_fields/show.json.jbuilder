@@ -1,0 +1,1 @@
+json.partial! "hay_fields/hay_field", hay_field: @hay_field
