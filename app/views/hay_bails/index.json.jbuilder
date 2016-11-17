@@ -1,1 +1,0 @@
-json.array! @hay_bails, partial: 'hay_bails/hay_bail', as: :hay_bail

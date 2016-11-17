@@ -1,1 +1,0 @@
-json.partial! "hay_bails/hay_bail", hay_bail: @hay_bail

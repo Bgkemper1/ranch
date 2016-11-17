@@ -1,23 +1,30 @@
-h1 Listing hay_fields
+h1 Pugmire Ranch
 
-table class='table'
-  thead
-    tr
-      th Field name
-      th Bail count
-      th
-      th
-      th
+div class='col-md-10'
 
-  tbody
-    - @hay_fields.each do |hay_field|
+  table class='table'
+    thead
       tr
-        td = hay_field.field_name
-        td = hay_field.bail_count
-        td = link_to 'Show', hay_field
-        td = link_to 'Edit', edit_hay_field_path(hay_field)
-        td = link_to 'Destroy', hay_field, data: { confirm: 'Are you sure?' }, method: :delete
+        th Field name
+        th Bail count
+        th
+        th
+        th
 
-br
+    tbody
+      - @hay_fields.each do |hay_field|
+        tr
+          td
+            = hay_field.field_name
+          td
+            = hay_field.bail_count
+          td
+            = link_to 'Show', hay_field, class: 'btn btn-info'
+          td
+            = link_to 'Edit', edit_hay_field_path(hay_field), class: 'btn btn-warning'
+          td
+            = link_to 'Destroy', hay_field, data: { confirm: 'Are you sure?' }, method: :delete, class: 'btn btn-danger'
 
-= link_to 'New Hay field', new_hay_field_path
+  br
+  td class='pagination-center'
+    = link_to 'New Hay field', new_hay_field_path, class: 'btn btn-primary'
