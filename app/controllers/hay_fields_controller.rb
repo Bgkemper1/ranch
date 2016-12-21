@@ -7,6 +7,8 @@ class HayFieldsController < ApplicationController
     @hay_fields = HayField.all
   end
 
+  def configure
+  end
   # GET /hay_fields/1
   # GET /hay_fields/1.json
   def show
