@@ -44,7 +44,7 @@ class HayFieldsController < ApplicationController
   def update
     respond_to do |format|
       if @hay_field.update(hay_field_params)
-        format.html { redirect_to @hay_field, notice: 'Hay field was successfully updated.' }
+        format.html { redirect_to hay_fields_path, notice: 'Hay field was successfully updated.' }
         format.json { render :show, status: :ok, location: @hay_field }
       else
         format.html { render :edit }
@@ -71,6 +71,6 @@ class HayFieldsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def hay_field_params
-      params.require(:hay_field).permit(:field_name, :bail_count)
+      params.require(:hay_field).permit(:field_name, :bail_count, :average_weight, :hay_price  )
     end
 end

@@ -5,11 +5,19 @@
       ul
         - @hay_field.errors.full_messages.each do |message|
           li = message
-
-  .field
-    = f.label :field_name
-    = f.text_field :field_name
-  .field
-    = f.label :bail_count
-    = f.number_field :bail_count
-  .actions = f.submit
+  table.table.table-bordered.table-striped style="margin:0"
+    tr
+      th.col-lg-2 = f.label :field_name
+      td = f.text_field :field_name
+    tr
+      th.col-lg-2 = f.label :bail_count
+      td = f.number_field :bail_count
+    tr
+      th.col-lg-2 = f.label :average_weight
+      td = f.number_field :average_weight
+    tr
+      th.col-lg-2 = f.label :hay_price
+      td = f.number_field :hay_price
+    tr
+      th.col-lg-2
+      td.actions = f.submit

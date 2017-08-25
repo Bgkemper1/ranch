@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161117034516) do
+ActiveRecord::Schema.define(version: 20170825034000) do
 
   create_table "hay_bails", force: :cascade do |t|
     t.string   "field_name"
@@ -22,8 +22,10 @@ ActiveRecord::Schema.define(version: 20161117034516) do
   create_table "hay_fields", force: :cascade do |t|
     t.string   "field_name"
     t.integer  "bail_count"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.integer  "average_weight"
+    t.decimal  "hay_price"
   end
 
 end

@@ -9,8 +9,9 @@ div.col-lg-8.col-lg-offset-2
     table.table
       thead
         tr
-          th.col-lg-2 Field name
-          th.col-lg-2 Bail count
+          th.col-lg-2 Field Name
+          th.col-lg-2 Bail Count
+          th.col-lg-2 Average Weight
           th.col-lg-1
           th.col-lg-1
           th.col-lg-1
@@ -22,15 +23,15 @@ div.col-lg-8.col-lg-offset-2
               = hay_field.field_name
             td.col-lg-2
               = hay_field.bail_count
+            td.col-lg-2
+              = hay_field.average_weight
             td.col-lg-1
-              = link_to 'Show', hay_field, class: 'btn btn-info'
+              = link_to 'Configure', hay_field_configure_path(hay_field), class: 'btn btn-info'
             td.col-lg-1
-              = link_to 'Edit', edit_hay_field_path(hay_field), class: 'btn btn-warning'
+              = link_to 'Edit', edit_hay_field_path(hay_field), class: 'btn btn-primary'
             td.col-lg-1
               = link_to 'Destroy', hay_field, data: { confirm: 'Are you sure?' }, method: :delete, class: 'btn btn-danger'
 
     br
       div.col-lg-1.col-lg-offset-3
         = link_to 'New Hay field', new_hay_field_path, class: 'btn btn-primary', style: 'margin-bottom:10px; margin-top:40px;'
-      div.col-lg-1.col-lg-offset-3
-        = link_to 'Configure', hay_field_configure_path(@hay_fields) , class: 'btn btn-primary', style: 'margin-left:10px; margin-bottom:10px; margin-top:40px;'

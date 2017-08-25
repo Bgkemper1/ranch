@@ -5,5 +5,5 @@ Rails.application.routes.draw do
 
   resources 'hay_fields' do
     get 'configure'
-  end 
+  end
 end
