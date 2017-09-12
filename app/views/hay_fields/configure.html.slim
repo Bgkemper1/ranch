@@ -1,4 +1,23 @@
-h1 Lets configure some stuff!
+.panel.panel-primary
+  .panel-heading
+    | Configure &nbsp;
+    = @hay_field[:field_name]
 
-div
-  = link_to 'Main', hay_fields_path, class: 'btn btn-primary'
+  .panel-body
+    = form_tag({controller: "hay_fields", action: "generate_output"}, method: "POST")
+      table.table.table-bordered.table-striped style="margin:0"
+        tr
+          td.col-lg-2 Bail Count
+          td.col-lg-2 = @hay_field['bail_count']
+        tr
+          td.col-lg-2 Average Weight
+          td.col-lg-2 = @hay_field['average_weight']
+        tr
+          td.col-lg-2 Hay Price
+          td.col-lg-2 = text_field_tag :hay_price, "", placeholder: "example 1.20 for $1.20", class: 'form-control'
+        tr
+          td.col-lg-2 Percent to split
+          td.col-lg-2 = select_tag :percent_to_split, options_for_select((10..100).step(10).to_a.map{|num| ["#{num}%"]}), placeholder: "example 50 for 50%", class: 'form-control'
+      .text-center
+        = link_to 'Back', hay_fields_path, class:'btn btn-default', style:'margin-top: 10px;'
+        = submit_tag 'Submit', class:'btn btn-default', style:'margin-top: 10px;'

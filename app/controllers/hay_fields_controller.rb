@@ -7,8 +7,18 @@ class HayFieldsController < ApplicationController
     @hay_fields = HayField.all
   end
 
+  #GET /configure
   def configure
+    @hay_field = HayField.find(params['hay_field_id'])
   end
+
+  #POST /generate_output
+  def generate_output
+    hay_field = HayField.find(params['hay_field_id'])
+    hay_field.build_invoice(params)
+    redirect_to hay_field_configure_path(hay_field), notice: 'Building Invoice!'
+  end
+
   # GET /hay_fields/1
   # GET /hay_fields/1.json
   def show

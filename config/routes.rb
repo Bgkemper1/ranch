@@ -5,5 +5,6 @@ Rails.application.routes.draw do
 
   resources 'hay_fields' do
     get 'configure'
+    post 'generate_output'
   end
 end
