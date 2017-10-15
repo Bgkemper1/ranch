@@ -15,13 +15,23 @@ class HayFieldsController < ApplicationController
   #POST /generate_output
   def generate_output
     hay_field = HayField.find(params['hay_field_id'])
-    hay_field.build_invoice(params)
-    redirect_to hay_field_configure_path(hay_field), notice: 'Building Invoice!'
+    hay_field.build_totals(params)
+    redirect_to hay_field_path(hay_field), notice: 'Building Invoice!'
   end
 
   # GET /hay_fields/1
   # GET /hay_fields/1.json
   def show
+    @hay_field = HayField.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.pdf do
+        pdf = HayFieldPdf.new(@hay_field)
+        send_data pdf.render, filename: "#{@hay_field[:field_name]}_invoice.pdf",
+                              type: "application/pdf",
+                              disposition: "inline"
+      end
+    end
   end
 
   # GET /hay_fields/new
@@ -38,14 +48,10 @@ class HayFieldsController < ApplicationController
   def create
     @hay_field = HayField.new(hay_field_params)
 
-    respond_to do |format|
-      if @hay_field.save
-        format.html { redirect_to @hay_field, notice: 'Hay field was successfully created.' }
-        format.json { render :show, status: :created, location: @hay_field }
-      else
-        format.html { render :new }
-        format.json { render json: @hay_field.errors, status: :unprocessable_entity }
-      end
+    if @hay_field.save
+      redirect_to hay_fields_path, notice: 'Hay field was successfully created.'
+    else
+      render :new
     end
   end
 
@@ -81,6 +87,6 @@ class HayFieldsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def hay_field_params
-      params.require(:hay_field).permit(:field_name, :bail_count, :average_weight, :hay_price  )
+      params.require(:hay_field).permit(:field_name)
     end
 end

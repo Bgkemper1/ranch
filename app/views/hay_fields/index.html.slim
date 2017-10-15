@@ -1,36 +1,24 @@
-h1.text-center Pugmire Ranch
-.col-lg-8.col-lg-offset-2
+.col-lg-6.col-lg-offset-3.top-space
   .panel.panel-default
     .panel-heading
-      h3.panel-title Hay Fields
+      .text-center
+        | Hay Fields
+        .pull-right
+          = link_to new_hay_field_path do
+            i.glyphicon.glyphicon-plus
     table.table
-      thead
-        tr
-          th.col-lg-2 Field Name
-          th.col-lg-2 Bail Count
-          th.col-lg-2 Average Weight
-          th.col-lg-1
-          th.col-lg-1
-          th.col-lg-1
-            = link_to new_hay_field_path do
-              i.glyphicon.glyphicon-plus
-
-
       tbody
         - @hay_fields.each do |hay_field|
           tr
-            td.col-lg-2
-              = hay_field.field_name
-            td.col-lg-2
-              = hay_field.bail_count
-            td.col-lg-2
-              = hay_field.average_weight
+            td.col-lg-6
+              strong
+                = link_to "#{hay_field.field_name}", hay_field_path(hay_field)
             td.col-lg-1
-              = link_to hay_field_configure_path(hay_field) do
-                i.glyphicon.glyphicon-file
+                = link_to hay_field_configure_path(hay_field), class: "btn btn-default" do
+                  i.glyphicon.glyphicon-file
             td.col-lg-1
-              = link_to edit_hay_field_path(hay_field) do
+              = link_to edit_hay_field_path(hay_field), class: "btn btn-default" do
                 i.glyphicon.glyphicon-pencil
             td.col-lg-1
-              = link_to hay_field, data: { confirm: 'Are you sure?' }, method: :delete, style: 'color:red;' do
+              = link_to hay_field, data: { confirm: 'Are you sure?' }, method: :delete, style: 'color:red;', class: "btn btn-default" do
                 i.glyphicon.glyphicon-trash

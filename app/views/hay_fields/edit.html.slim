@@ -1,4 +1,9 @@
-.panel.panel-primary
-  .panel-heading
-    .panel-title.text-center Edit Hay field
-  = render 'form'
+.col-lg-6.col-lg-offset-3.top-space
+  .panel.panel-default
+    .panel-heading
+      = link_to hay_fields_path do
+        i.glyphicon.glyphicon-chevron-left
+      .text-center
+        Edit Hay field
+    .panel-body
+      = render 'form'
