@@ -1,8 +1,9 @@
-h1 Editing hay_field
-
-== render 'form'
-
-= link_to 'Show', @hay_field
-'|
-= link_to 'Back', hay_fields_path
-
+.col-lg-6.col-lg-offset-3.top-space
+  .panel.panel-default
+    .panel-heading
+      = link_to hay_fields_path do
+        i.glyphicon.glyphicon-chevron-left
+      .text-center
+        Edit Hay field
+    .panel-body
+      = render 'form'

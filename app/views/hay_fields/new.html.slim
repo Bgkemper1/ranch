@@ -1,5 +1,7 @@
-h1 New hay_field
-
-== render 'form'
-
-= link_to 'Back', hay_fields_path
+.col-lg-6.col-lg-offset-3.top-space
+  .panel.panel-default
+    .panel-heading
+      = link_to hay_fields_path do
+        i.glyphicon.glyphicon-chevron-left
+      .panel-title.text-center New Hay field
+    = render 'form'

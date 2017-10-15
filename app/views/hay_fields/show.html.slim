@@ -1,12 +1,27 @@
-p#notice = notice
-
-p
-  strong Field name:
-  = @hay_field.field_name
-p
-  strong Bail count:
-  = @hay_field.bail_count
-
-= link_to 'Edit', edit_hay_field_path(@hay_field)
-'|
-= link_to 'Back', hay_fields_path
+.col-lg-6.col-lg-offset-3.top-space
+  .panel.panel-default
+    .panel-heading
+      = link_to hay_fields_path do
+        i.glyphicon.glyphicon-home
+      .text-center
+        strong
+          = @hay_field[:field_name]
+    .panel-body
+      table.table.table-bordered.table-striped style="margin:0"
+        tr
+          td.col-lg-2
+            | Bail count: &nbsp;
+            = @hay_field.bail_count
+        tr
+          td.col-lg-2
+            | Average Weight: &nbsp;
+            = @hay_field.average_weight
+        tr
+          td.col-lg-2
+            | Price Per Ton: &nbsp;
+            = @hay_field.price_per_ton
+        tr
+          td.col-lg-2
+            | Number of Cuts: &nbsp;
+            = @hay_field.cuts
+        = link_to "View printable invoice", hay_field_path(@hay_field, format: "pdf")
